@@ -21,3 +21,21 @@
 ---
 
 맛있는 개발 한 끼, 함께 즐겨봐요! 🍜✨
+
+--- 
+
+### 패키지 구조
+```
+📦 com.devmeal
+├── config                    ✅ 설정 관련
+├── controller                ✅ 웹 컨트롤러
+├── extension                 ✅ 확장 함수
+├── mail
+│   ├── render                ✅ 메일 템플릿 렌더링
+│   └── sender                ✅ 메일 전송 구현
+├── rss
+│   ├── parser                ✅ RSS 파싱 (로우 데이터)
+│   └── reader                ✅ 블로그별 Reader (도메인 레벨)
+├── schedule                  ✅ 스케줄러 진입 지점
+└── service                   ✅ Coordinator 역할의 서비스 계층
+```
