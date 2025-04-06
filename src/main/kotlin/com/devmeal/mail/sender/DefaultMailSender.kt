@@ -1,4 +1,4 @@
-package com.devmeal.mail
+package com.devmeal.mail.sender
 
 import org.springframework.mail.javamail.JavaMailSender
 import org.springframework.mail.javamail.MimeMessageHelper
@@ -6,7 +6,7 @@ import org.springframework.scheduling.annotation.Async
 import org.springframework.stereotype.Component
 
 @Component
-class DefaultMailSender(
+internal class DefaultMailSender(
     private val javaMailSender: JavaMailSender
 ) : MailSender {
     @Async

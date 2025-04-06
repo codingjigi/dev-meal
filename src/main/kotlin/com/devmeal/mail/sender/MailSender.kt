@@ -1,4 +1,4 @@
-package com.devmeal.mail
+package com.devmeal.mail.sender
 
 interface MailSender {
 

@@ -1,8 +1,8 @@
-package com.devmeal.reader
+package com.devmeal.rss.reader
 
 import com.devmeal.extension.toKoreanString
-import com.devmeal.parser.RssParser
-import com.devmeal.reader.dto.TechBlogPostDto
+import com.devmeal.rss.parser.RssParser
+import com.devmeal.rss.reader.dto.TechBlogPostDto
 import org.springframework.stereotype.Component
 
 @Component

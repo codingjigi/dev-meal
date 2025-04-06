@@ -1,6 +1,6 @@
-package com.devmeal.parser
+package com.devmeal.rss.parser
 
-import com.devmeal.parser.dto.RssDto
+import com.devmeal.rss.parser.dto.RssDto
 import com.rometools.rome.io.SyndFeedInput
 import com.rometools.rome.io.XmlReader
 import org.springframework.stereotype.Component

@@ -1,8 +1,8 @@
 package com.devmeal.service
 
-import com.devmeal.mail.MailSender
-import com.devmeal.mail.MailTemplateRender
-import com.devmeal.reader.TechBlogRssReader
+import com.devmeal.mail.sender.MailSender
+import com.devmeal.mail.render.MailTemplateRender
+import com.devmeal.rss.reader.TechBlogRssReader
 import org.springframework.stereotype.Service
 
 @Service

@@ -1,4 +1,4 @@
-package com.devmeal.reader.dto
+package com.devmeal.rss.reader.dto
 
 data class TechBlogPostDto(
     val title: String,

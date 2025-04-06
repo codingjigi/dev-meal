@@ -1,6 +1,6 @@
-package com.devmeal.mail
+package com.devmeal.mail.render
 
-import com.devmeal.reader.dto.TechBlogPostDto
+import com.devmeal.rss.reader.dto.TechBlogPostDto
 import org.springframework.stereotype.Component
 import org.thymeleaf.context.Context
 import org.thymeleaf.spring6.SpringTemplateEngine

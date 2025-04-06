@@ -1,4 +1,4 @@
-package com.devmeal.parser.dto
+package com.devmeal.rss.parser.dto
 
 import java.util.*
 
