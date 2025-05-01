@@ -1,6 +1,6 @@
 package com.devmeal.rss.parser.dto
 
-import java.util.*
+import java.util.Date
 
 data class RssDto(
     val title: String,

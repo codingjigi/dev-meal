@@ -5,6 +5,7 @@
   <title>개발한끼 뉴스레터 구독</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    /* 스타일은 그대로 유지 */
     :root {
       --primary: #4e83f1;
       --bg: #f9fafb;
@@ -132,13 +133,14 @@
     </p>
   </div>
 
-  <form class="form-box" th:action="@{/subscribe}" method="post">
-    <input type="email" name="email" placeholder="이메일 주소를 입력해주세요" required>
+  <!-- 폼 설정 -->
+  <form id="subscribeForm" class="form-box">
+    <input type="email" id="email" name="email" placeholder="이메일 주소를 입력해주세요" required>
 
-    <label for="time" style="font-size:14px; color:#555; display:block; margin-bottom:4px;">
+    <label for="preferredSendTime" style="font-size:14px; color:#555; display:block; margin-bottom:4px;">
       받고 싶은 시간
     </label>
-    <select name="time" id="time" required>
+    <select name="preferredSendTime" id="preferredSendTime" required>
       <option value="06:00">오전 6시</option>
       <option value="07:00">오전 7시</option>
       <option value="08:00" selected>오전 8시</option>
@@ -162,5 +164,40 @@
     매일 정해진 시간에만 발송됩니다.
   </div>
 </div>
+
+<script>
+  document.getElementById('subscribeForm').addEventListener('submit', function(event) {
+    event.preventDefault();  // 폼 제출 기본 동작 방지
+
+    const email = document.getElementById('email').value;
+    const preferredSendTime = document.getElementById('preferredSendTime').value;
+
+    const data = {
+      email: email,
+      preferredSendTime: preferredSendTime
+    };
+
+    fetch('/api/subscribe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+            .then(response => {
+              if (response.status === 200) {
+                alert('구독이 성공적으로 완료되었습니다!');
+              } else {
+                alert('오류가 발생했습니다. 다시 시도해 주세요.');
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              alert('네트워크 오류가 발생했습니다.');
+            });
+
+  });
+</script>
+
 </body>
 </html>

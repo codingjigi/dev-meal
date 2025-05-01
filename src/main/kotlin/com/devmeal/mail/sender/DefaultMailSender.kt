@@ -16,7 +16,7 @@ internal class DefaultMailSender(
 
         helper.setFrom("codingjigi@gmail.com")
         helper.setTo(to)
-        helper.setSubject("📰 이번 주 기술 블로그 요약")
+        helper.setSubject("📰 기술 블로그 📖 | 오늘의 최신 글을 확인하세요! 🔥")
         helper.setText(htmlBody, true)
 
         javaMailSender.send(message)
