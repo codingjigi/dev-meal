@@ -3,10 +3,8 @@ package com.devmeal.rss.reader
 import com.devmeal.extension.toKoreanString
 import com.devmeal.rss.parser.RssParser
 import com.devmeal.rss.reader.dto.TechBlogPostDto
-import org.springframework.stereotype.Component
 
-@Component
-internal class KakaoRssReader(
+class KulryRssReader(
     private val parser: RssParser
 ) : TechBlogRssReader {
     override fun parse(): List<TechBlogPostDto> {
@@ -23,7 +21,7 @@ internal class KakaoRssReader(
     }
 
     companion object {
-        private const val URL = "https://tech.kakao.com/feed/"
-        private const val SOURCE = "카카오"
+        private const val URL = "https://helloworld.kurly.com/feed.xml"
+        private const val SOURCE = "컬리"
     }
 }

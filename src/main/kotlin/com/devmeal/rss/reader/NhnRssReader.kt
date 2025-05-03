@@ -6,7 +6,7 @@ import com.devmeal.rss.reader.dto.TechBlogPostDto
 import org.springframework.stereotype.Component
 
 @Component
-internal class KakaoRssReader(
+class NhnRssReader(
     private val parser: RssParser
 ) : TechBlogRssReader {
     override fun parse(): List<TechBlogPostDto> {
@@ -23,7 +23,7 @@ internal class KakaoRssReader(
     }
 
     companion object {
-        private const val URL = "https://tech.kakao.com/feed/"
-        private const val SOURCE = "카카오"
+        private const val URL = "https://meetup.nhncloud.com/rss"
+        private const val SOURCE = "NHN"
     }
 }

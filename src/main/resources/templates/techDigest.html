@@ -1,112 +1,37 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>개발한끼 뉴스레터</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-        :root {
-            --primary: #4e83f1;
-            --text-main: #1e1e1e;
-            --text-sub: #777;
-            --background: #f5f7fa;
-            --card-bg: #fff;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--background);
-            font-family: -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif;
-            color: var(--text-main);
-        }
-
-        .wrapper {
-            max-width: 600px;
-            margin: auto;
-            padding: 24px 16px;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .header h1 {
-            font-size: 22px;
-            margin: 0;
-            color: var(--primary);
-        }
-
-        .header p {
-            font-size: 14px;
-            color: var(--text-sub);
-            margin-top: 8px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 16px;
-            margin-bottom: 16px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-        }
-
-        .post-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .meta {
-            font-size: 13px;
-            color: var(--text-sub);
-            margin-top: 6px;
-        }
-
-        .footer {
-            font-size: 12px;
-            color: #aaa;
-            text-align: center;
-            margin-top: 32px;
-            line-height: 1.6;
-        }
-
-        @media (max-width: 480px) {
-            .card {
-                padding: 16px;
-                border-radius: 12px;
-            }
-
-            .post-title {
-                font-size: 15px;
-            }
-        }
-    </style>
 </head>
-<body>
-<div class="wrapper">
-    <div class="header">
-        <h1>🍱 개발한끼 뉴스레터</h1>
-        <p>오늘도 가볍게, 개발 블로그 한 끼 어떠세요?</p>
+<body style="margin:0; padding:0; background-color:#f5f7fa; font-family:-apple-system,BlinkMacSystemFont,'Noto Sans KR',sans-serif; color:#1e1e1e;">
+
+<div style="max-width:600px; margin:auto; padding:24px 16px;">
+    <div style="text-align:center; margin-bottom:32px;">
+        <h1 style="font-size:22px; margin:0; color:#4e83f1;">🍱 개발한끼 뉴스레터</h1>
+        <p style="font-size:14px; color:#777; margin-top:8px;">오늘도 가볍게, 개발 블로그 한 끼 어떠세요?</p>
     </div>
 
-    <div th:each="post : ${posts}" class="card">
-        <a th:href="${post.link}" th:text="${post.title}" class="post-title">[제목]</a>
-        <div th:text="${post.publishedDate}" class="meta">[날짜]</div>
-    </div>
+    <!-- 그룹 반복 시작 -->
+    <div th:each="group : ${posts}" style="margin-bottom:48px; padding-bottom:24px; border-bottom:1px solid #ddd;">
+        <div th:text="${group.source}" style="font-size:18px; font-weight:bold; margin:32px 0 16px 4px; border-left:4px solid #4e83f1; padding-left:10px;">
+            출처
+        </div>
 
-    <div class="footer">
+        <!-- 게시글 반복 -->
+        <div th:each="post : ${group.posts}" style="background:#fff; padding:20px; border-radius:16px; margin-bottom:16px; box-shadow:0 4px 12px rgba(0,0,0,0.04);">
+            <a th:href="${post.link}" th:text="${post.title}" style="font-size:16px; font-weight:600; color:#4e83f1; text-decoration:none;">[제목]</a>
+            <div th:text="${post.publishedDate}" style="font-size:13px; color:#777; margin-top:6px;">[날짜]</div>
+        </div>
+        <!-- 게시글 반복 끝 -->
+    </div>
+    <!-- 그룹 반복 끝 -->
+
+    <div style="font-size:12px; color:#aaa; text-align:center; margin-top:40px; line-height:1.6;">
         이 뉴스레터는 <strong>개발한끼</strong>에서 자동으로 발송되었습니다.<br/>
-        더 이상 받고 싶지 않다면 [수신 거부]를 클릭해주세요.
     </div>
 </div>
+
 </body>
 </html>

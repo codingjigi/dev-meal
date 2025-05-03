@@ -1,7 +1,7 @@
 package com.devmeal.service
 
-import com.devmeal.domain.Member
 import com.devmeal.api.dto.FormRequestDto
+import com.devmeal.domain.Member
 import com.devmeal.domain.MemberDto
 import com.devmeal.domain.Members
 import com.devmeal.repository.MemberRepository
@@ -18,7 +18,11 @@ class MemberService(
         )
     }
 
-    fun insert(form: FormRequestDto) {
-        memberRepository.save(Member(form.email, form.preferredSendTime))
+    fun insert(request: FormRequestDto) {
+        val hasEmail = memberRepository.existsByEmail(request.email)
+        if(hasEmail) {
+            throw RuntimeException("이미 존재하는 이메일입니다.")
+        }
+        memberRepository.save(Member(request.email, request.preferredSendTime))
     }
 }

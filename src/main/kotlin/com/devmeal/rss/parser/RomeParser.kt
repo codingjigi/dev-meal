@@ -1,5 +1,6 @@
 package com.devmeal.rss.parser
 
+import com.devmeal.extension.isToday
 import com.devmeal.rss.parser.dto.RssDto
 import com.rometools.rome.io.SyndFeedInput
 import com.rometools.rome.io.XmlReader
@@ -9,7 +10,9 @@ import java.net.URI
 @Component
 internal class RomeParser : RssParser {
     override fun parse(url: String): List<RssDto> =
-        SyndFeedInput().build(XmlReader((URI.create(url).toURL()))).entries.map {
+        SyndFeedInput().build(XmlReader((URI.create(url).toURL()))).entries
+            .filter { it.publishedDate.isToday() }
+            .map {
             RssDto(
                 title = it.title,
                 link = it.link,

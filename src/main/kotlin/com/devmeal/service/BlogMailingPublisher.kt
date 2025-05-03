@@ -1,10 +1,10 @@
 package com.devmeal.service
 
+import com.devmeal.mail.dto.TechBlogGroupDto
 import com.devmeal.mail.render.MailTemplateRender
 import com.devmeal.mail.sender.MailSender
 import com.devmeal.rss.reader.TechBlogRssReader
 import org.springframework.stereotype.Component
-import org.springframework.stereotype.Service
 
 @Component
 class BlogMailingPublisher(
@@ -15,8 +15,11 @@ class BlogMailingPublisher(
 ) {
     fun sendDailyPosting(currentTime: String) {
         val members = memberService.findBySendTime(currentTime)
-        val techBlogPosts = techBlogRssReaders.flatMap { it.parse() }
-        val htmlBody = mailTemplateRender.create(techBlogPosts)
+        val result = techBlogRssReaders
+            .flatMap { it.parse() }
+            .groupBy { it.source }
+            .map { (source, feeds) -> TechBlogGroupDto(source, feeds) }
+        val htmlBody = mailTemplateRender.create(result)
         members.getEmails().forEach { mailSender.send(it.email, htmlBody) }
     }
 }
